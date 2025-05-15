@@ -147,26 +147,48 @@
             object-fit: cover;
             border-radius: 20px;
         }
-        .hero-btn {
-            background-color: #e63946;
-            color: #ffffff;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 18px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        .hero-btn:hover {
-            background-color: #d32f3a;
-            transform: translateY(-2px);
-        }
-        .hero-btn:active {
-            transform: translateY(0);
-        }
+       .hero-btn {
+    background-color: #e63946;
+    color: #ffffff;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+    position: relative;
+    animation: pulse-shadow 2s infinite ease-in-out;
+    will-change: box-shadow;
+}
+
+.hero-btn:hover {
+    background-color: #d32f3a;
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgba(227, 57, 70, 0.8); /* Jača senka na hover */
+    animation: none; /* Zaustavlja pulsiranje na hover */
+}
+
+.hero-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 8px rgba(227, 57, 70, 0.6); /* Smanjena senka na klik */
+    animation: none; /* Zaustavlja pulsiranje na klik */
+}
+
+/* Animacija za pulsirajuću crvenu senku */
+@keyframes pulse-shadow {
+    0% {
+        box-shadow: 0 0 5px rgba(227, 57, 70, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(227, 57, 70, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(227, 57, 70, 0.4);
+    }
+}
 
 /* Stilizacija sekcije "O nama" */
 .about-section {
