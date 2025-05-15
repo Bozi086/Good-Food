@@ -1225,23 +1225,58 @@
     background-color: #e63946; /* Identична hover boja kao na kontakti.html */
 }
 
-/* Stilizacija Google Mape (identično kontakti.html) */
+/* Stilizacija za mapu */
 .map-container {
-    padding: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    max-width: 100%;
 }
 
 .map-wrapper {
-    position: relative;
-    padding-bottom: 0;
-    height: auto;
+    border: 2px solid #f28c38; /* Narandžasti border */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(242, 140, 56, 0.6); /* Suptilna senka */
+    animation: pulse-shadow-map 2s ease-in-out infinite; /* Pulsirajuća senka */
 }
 
-#map {
-    height: 400px;
+.map-wrapper:hover {
+    box-shadow: 0 0 15px rgba(242, 140, 56, 0.8); /* Jača senka na hover */
+    animation-play-state: paused; /* Pauzira animaciju */
+}
+
+.map-wrapper iframe {
     width: 100%;
-    border-radius: 10px;
-    border: 2px solid #f28c38;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 450px;
+    border: none;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Pulsirajuća senka */
+@keyframes pulse-shadow-map {
+    0%, 100% { box-shadow: 0 0 10px rgba(242, 140, 56, 0.6); }
+    50% { box-shadow: 0 0 20px rgba(242, 140, 56, 0.8); }
+}
+
+/* Responsivna prilagođavanja */
+@media (max-width: 767px) {
+    .map-container {
+        padding: 10px;
+    }
+    .map-wrapper iframe {
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .map-wrapper {
+        border-radius: 8px;
+    }
+    .map-wrapper iframe {
+        height: 300px;
+        border-radius: 6px;
+    }
 }
 
 /* Responzivna prilagođavanja za contact section */
@@ -1516,22 +1551,16 @@
                 </div>
             </div>
             <!-- Google Mapa -->
-            <div class="col-12">
-                <div class="card map-container shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h3 class="card-title mb-4" data-sr="Naša lokacija" data-en="Our Location">Naša lokacija</h3>
-                        <div class="map-wrapper">
-                            <iframe
-                                id="map"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.806195305315!2d19.260505315627717!3d42.44100397918082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDI2JzI3LjYiTiAxOcKwMTUnNDYuMiJF!5e0!3m2!1sen!2sme!4v1634567890123!5m2!1sen!2sme"
-                                allowfullscreen=""
-                                loading="lazy"
-                                title="GOODFOOD - Podgorica"
-                            ></iframe>
-                        </div>
-                    </div>
-                </div>
+         <div class="col-12">
+    <div class="card map-container shadow-sm border-0">
+        <div class="card-body p-4">
+            <h3 class="card-title mb-4" data-sr="Naša lokacija" data-en="Our Location">Naša lokacija</h3>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1888.8445726958812!2d19.179073075334085!3d42.50907765719961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134dbfe68e9aa5bd%3A0xe4bec4b102047730!2sGood%20Food!5e0!3m2!1sen!2s!4v1747346253663!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
     </main>
