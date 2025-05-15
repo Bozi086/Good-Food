@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Google Fonts - Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Prilagođeni CSS -->
+     <link rel="icon" type="image/x-icon" href="logo1.png">
     <style>
         /* Osiguravanje da futer bude na dnu stranice */
         html, body {
@@ -377,6 +377,74 @@
                 max-height: 50vh;
             }
         }
+
+        /* Stilizacija dugmeta za povratak na vrh */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f28c38; /* Narandžasta pozadina */
+    color: #ffffff;
+    width: 50px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% 50% 60% 60% / 40% 40% 60% 60%; /* Jajoliki oblik */
+    box-shadow: 0 0 10px rgba(242, 140, 56, 0.5); /* Pulsirajuća senka */
+    animation: pulse-shadow-btn 2s ease-in-out infinite;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #e63946; /* Crvena na hover */
+    box-shadow: 0 0 15px rgba(242, 140, 56, 0.7); /* Jača senka */
+    animation-play-state: paused;
+}
+
+.back-to-top i {
+    font-size: 1.5rem; /* Veličina strelice */
+}
+
+/* Pulsirajuća senka za dugme */
+@keyframes pulse-shadow-btn {
+    0%, 100% { box-shadow: 0 0 10px rgba(242, 140, 56, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(242, 140, 56, 0.7); }
+}
+
+/* Responsivna prilagođavanja */
+@media (max-width: 767px) {
+    .back-to-top {
+        width: 40px;
+        height: 60px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .back-to-top i {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .back-to-top {
+        width: 35px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+    }
+    .back-to-top i {
+        font-size: 1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -510,12 +578,12 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="gallery-item">
-                <img src="radovi3.jpg" alt="Tesarski radovi" data-sr-alt="Tesarski radovi" data-en-alt="Carpentry Works" class="img-fluid rounded shadow-sm" data-index="18" loading="lazy">
+                <img src="radovi6.jpg" alt="Tesarski radovi" data-sr-alt="Tesarski radovi" data-en-alt="Carpentry Works" class="img-fluid rounded shadow-sm" data-index="18" loading="lazy">
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="gallery-item">
-                <img src="radovi6.jpg" alt="Good Food" data-sr-alt="Good Food" data-en-alt="Good Food" class="img-fluid rounded shadow-sm" data-index="19" loading="lazy">
+                <img src="radovi3.jpg" alt="Good Food" data-sr-alt="Good Food" data-en-alt="Good Food" class="img-fluid rounded shadow-sm" data-index="19" loading="lazy">
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -529,7 +597,10 @@
             </div>
         </div>
     </div>
-</main>
+<!-- Dugme za povratak na vrh -->
+<button class="back-to-top" aria-label="Povratak na vrh stranice" title="Povratak na vrh">
+    <i class="bi bi-arrow-up"></i>
+</button>
 
         <!-- Modal za uveličavanje slika -->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -711,6 +782,24 @@
                 }
             });
         });
+
+// Prikazivanje/sakrivanje dugmeta za povratak na vrh
+window.addEventListener('scroll', function() {
+    const backToTop = document.querySelector('.back-to-top');
+    if (window.pageYOffset > 100) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+// Glatko skrolovanje na vrh
+document.querySelector('.back-to-top').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
     </script>
 </body>
 </html>
